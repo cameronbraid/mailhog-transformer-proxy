@@ -29,7 +29,14 @@ app.use(function (req, res) {
   proxy.web(req, res);
 });
 
-http.createServer(app).listen(proxyPort);
+var server = http.createServer(app);
+
+server.on('upgrade', function (req, socket, head) {
+  proxy.ws(req, socket, head);
+});
+
+
+server.listen(proxyPort);
 
 console.log('Listening on port ', proxyPort);
 console.log('Upstream is ' + upstreamUrl);
