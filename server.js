@@ -23,7 +23,7 @@ var upstreamUrl = process.env.UPSTREAM_URL || 'http://localhost:8080';
 var app = connect();
 var proxy = httpProxy.createProxyServer({target: upstreamUrl});
 
-app.use(transformerProxy(transformerFunction, {match : /\//}));
+app.use(transformerProxy(transformerFunction, {match : /^\/$/}));
 
 app.use(function (req, res) {
   proxy.web(req, res);
