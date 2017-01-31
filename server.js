@@ -19,9 +19,9 @@ var transformerFunction = function (data, req, res) {
 //
 
 var proxyPort = process.env.PROXY_PORT || 8080;
-var upstream = process.env.UPSTREAM_URL || 'http://localhost:8080';
+var upstreamUrl = process.env.UPSTREAM_URL || 'http://localhost:8080';
 var app = connect();
-var proxy = httpProxy.createProxyServer({target: upstream});
+var proxy = httpProxy.createProxyServer({target: upstreamUrl});
 
 app.use(transformerProxy(transformerFunction));
 
@@ -32,4 +32,4 @@ app.use(function (req, res) {
 http.createServer(app).listen(proxyPort);
 
 console.log('Listening on port ', proxyPort);
-console.log('Upstream is ' + UPSTREAM_URL');
+console.log('Upstream is ' + upstreamUrl);
