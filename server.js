@@ -10,7 +10,7 @@ var http = require('http'),
 //
 
 var transformerFunction = function (data, req, res) {
-  return data.toString().replace('var apiHost = "";', 'var apiHost = document.location.origin;');
+  return data.toString().replace('var apiHost = "";', 'var apiHost = document.location.origin;').replace("</head>", "<style>.jim-well { display: none }</style></head>");
 };
 
 
@@ -38,5 +38,5 @@ server.on('upgrade', function (req, socket, head) {
 
 server.listen(proxyPort);
 
-console.log('Listening on port ', proxyPort);
+console.log('Listening on port ' + proxyPort);
 console.log('Upstream is ' + upstreamUrl);
