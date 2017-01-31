@@ -10,7 +10,7 @@ var http = require('http'),
 //
 
 var transformerFunction = function (data, req, res) {
-  return data.toString().replace('var apiHost = "";', 'var apiHost = document.location.href;');
+  return data.toString().replace('var apiHost = "";', 'var apiHost = document.location.origin;');
 };
 
 
