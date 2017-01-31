@@ -1,0 +1,15 @@
+{
+  "name": "mailhog-transformer",
+  "version": "1.0.0",
+  "description": "monkey patches the mailhog server to get websocket working in https",
+  "author": "Cameron Braid <cameron@drivenow.com.au>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "connect": "^3.5.0",
+    "http-proxy": "^1.16.2",
+    "transformer-proxy": "^0.3.3"
+  }
+}
